@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyCookBook</string>
+
+    <!--Add Food-->
+    <string name="add_food_title">Add Food</string>
+    <string name="add_food_name">Name of the Dish</string>
+    <string name="add_food_desc">Description/Recipe </string>
+    <string name="add_food_date">Choose Date</string>
+    <string name="add_food_save">Save Dish</string>
+
+</resources>
