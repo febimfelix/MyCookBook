@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           xmlns:tools="http://schemas.android.com/tools" package="com.febi.mycookbook">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
     <application
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
@@ -22,6 +24,16 @@
         <activity android:name=".AddFoodActivity"
             android:label="@string/add_food_title"
         android:screenOrientation="portrait"/>
+
+        <provider
+                android:name="android.support.v4.content.FileProvider"
+                android:authorities="com.febi.mycookbook"
+                android:exported="false"
+                android:grantUriPermissions="true">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/file_paths"></meta-data>
+        </provider>
     </application>
 
 </manifest>
