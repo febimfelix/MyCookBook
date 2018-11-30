@@ -6,18 +6,95 @@
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".HomeActivity">
+            tools:context=".activities.HomeActivity"
+            android:background="@drawable/splash">
 
-        <android.support.design.widget.FloatingActionButton
-                android:id="@+id/id_home_add_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_action_add"
-                android:backgroundTint="@color/colorAccent"
-                android:layout_margin="16dp"
-                android:onClick="navigateToAddScreen"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/transparent_primary"
+                android:padding="@dimen/common_side_padding"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="@dimen/common_top_padding">
+
+                <TextView
+                        android:id="@+id/id_home_dishes_list"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="@dimen/common_top_padding"
+                        android:background="@color/transparent_white"
+                        android:gravity="center"
+                        android:text="@string/home_dishes_list"
+                        android:textColor="@color/white_color"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:onClick="navigateToDishesList"/>
+
+                <TextView
+                        android:id="@+id/id_home_plan_meals"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/common_top_padding"
+                        android:background="@color/transparent_white"
+                        android:gravity="center"
+                        android:text="@string/home_plan_meals"
+                        android:textColor="@color/white_color"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:onClick="navigateToPlanMeals"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/common_top_padding">
+
+                <TextView
+                        android:id="@+id/id_home_what_to_cook"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="@dimen/common_top_padding"
+                        android:background="@color/transparent_white"
+                        android:gravity="center"
+                        android:text="@string/home_what_to_cook"
+                        android:textColor="@color/white_color"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:onClick="navigateToWhatToCook"/>
+
+                <TextView
+                        android:id="@+id/id_home_my_story"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="@dimen/common_top_padding"
+                        android:background="@color/transparent_white"
+                        android:gravity="center"
+                        android:text="@string/home_my_story"
+                        android:textColor="@color/white_color"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:onClick="navigateToMyStory"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
     </android.support.constraint.ConstraintLayout>
 </layout>

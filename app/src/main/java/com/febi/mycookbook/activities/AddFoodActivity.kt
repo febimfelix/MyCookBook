@@ -1,13 +1,14 @@
-package com.febi.mycookbook
+package com.febi.mycookbook.activities
 
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.Dialog
-import android.content.DialogInterface
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -19,42 +20,51 @@ import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.view.View
 import android.widget.DatePicker
-import com.febi.mycookbook.AddFoodActivity.DatePickerFragment.OnDateSelectionListener
+import com.febi.mycookbook.R
+import com.febi.mycookbook.activities.AddFoodActivity.DatePickerFragment.OnDateSelectionListener
+import com.febi.mycookbook.core.AppUtils
 import com.febi.mycookbook.databinding.ActivityAddFoodBinding
+import com.febi.mycookbook.datastructures.Dish
+import com.febi.mycookbook.datastructures.DishViewModel
 import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
 
 class AddFoodActivity : AppCompatActivity(){
-    val REQUEST_TAKE_PHOTO          = 1
-    val REQUEST_PICK_PHOTO          = 2;
+    companion object {
+        const val REQUEST_TAKE_PHOTO          = 1
+        const val REQUEST_PICK_PHOTO          = 2
+    }
 
     lateinit var mCurrentPhotoPath : String
     lateinit var addFoodDataBinding : ActivityAddFoodBinding
+    private lateinit var dishViewModel : DishViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        addFoodDataBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_food)
+        addFoodDataBinding          = DataBindingUtil.setContentView(this, R.layout.activity_add_food)
+
+        dishViewModel               = ViewModelProviders.of(this).get(DishViewModel::class.java)
 
         addFoodDataBinding.idAddFoodDate.setOnClickListener(dateClickListener)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
-            val imageBitmap = data!!.extras.get("data") as Bitmap
+            val imageBitmap     = data!!.extras.get("data") as Bitmap
             addFoodDataBinding.idAddFoodAvatar.setImageBitmap(imageBitmap)
         } else if(requestCode == REQUEST_PICK_PHOTO && resultCode == Activity.RESULT_OK) {
-            val photoUri : Uri = data!!.data
-            val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, photoUri)
+            val photoUri : Uri  = data!!.data
+            val bitmap: Bitmap  = MediaStore.Images.Media.getBitmap(this.contentResolver, photoUri)
             addFoodDataBinding.idAddFoodAvatar.setImageBitmap(bitmap)
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
 
     private val dateClickListener : View.OnClickListener = View.OnClickListener {
-        val newFragment = DatePickerFragment()
+        val newFragment         = DatePickerFragment()
         newFragment.setListener(dateSelectedListener)
         newFragment.show(supportFragmentManager, "datePicker")
     }
@@ -92,12 +102,18 @@ class AddFoodActivity : AppCompatActivity(){
     }
 
     fun saveDish(view : View) {
+        val bitmapDrawable : BitmapDrawable = addFoodDataBinding.idAddFoodAvatar.drawable as BitmapDrawable
+        dishViewModel.insert(Dish(addFoodDataBinding.idAddFoodName.text.toString(),
+            AppUtils.getDateFromString(addFoodDataBinding.idAddFoodDate.text.toString()),
+            addFoodDataBinding.idAddFoodDesc.text.toString(),
+            AppUtils.getByteArrayFromDrawable(bitmapDrawable.bitmap)))
 
+        finish()
     }
 
     private fun createImageFile(): File {
-        val timeStamp: String   = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
-        val storageDir: File    = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val timeStamp: String   = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+        val storageDir: File?   = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         return File.createTempFile("JPEG_${timeStamp}_", ".jpg", storageDir).apply {
             mCurrentPhotoPath   = absolutePath
         }

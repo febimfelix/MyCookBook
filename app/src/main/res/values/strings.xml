@@ -1,7 +1,15 @@
 <resources>
     <string name="app_name">MyCookBook</string>
 
-    <!--Add Food-->
+    <string name="home_menu_settings">Settings</string>
+    <string name="home_title">Home</string>
+    <string name="home_dishes_list">My \nDishes</string>
+    <string name="home_plan_meals">Plan \n Meals</string>
+    <string name="home_what_to_cook">What \nTo \nCook</string>
+    <string name="home_my_story">My \n Story</string>
+
+    <string name="dish_list_title">My Dishes</string>
+
     <string name="add_food_title">Add Food</string>
     <string name="add_food_name">Name of the Dish</string>
     <string name="add_food_desc">Description/Recipe </string>
@@ -12,5 +20,7 @@
         <item name="gallery">Select From Device</item>
         <item name="camera">Choose Camera</item>
     </array>
+
+    <string name="settings_title">My Settings</string>
 
 </resources>

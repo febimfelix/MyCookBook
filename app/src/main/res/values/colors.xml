@@ -6,4 +6,7 @@
 
     <color name="grey_color">#CCCCCC</color>
     <color name="white_color">#FFFFFF</color>
+
+    <color name="transparent_white">#33FFFFFF</color>
+    <color name="transparent_primary">#80008577</color>
 </resources>
