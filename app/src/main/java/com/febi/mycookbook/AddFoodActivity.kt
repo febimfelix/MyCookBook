@@ -1,7 +1,9 @@
 package com.febi.mycookbook
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.graphics.Bitmap
@@ -12,6 +14,7 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.support.v4.app.DialogFragment
 import android.support.v4.content.FileProvider
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.text.TextUtils
 import android.view.View
@@ -24,7 +27,8 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class AddFoodActivity : AppCompatActivity(){
-    val REQUEST_TAKE_PHOTO = 1
+    val REQUEST_TAKE_PHOTO          = 1
+    val REQUEST_PICK_PHOTO          = 2;
 
     lateinit var mCurrentPhotoPath : String
     lateinit var addFoodDataBinding : ActivityAddFoodBinding
@@ -41,6 +45,10 @@ class AddFoodActivity : AppCompatActivity(){
         if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
             val imageBitmap = data!!.extras.get("data") as Bitmap
             addFoodDataBinding.idAddFoodAvatar.setImageBitmap(imageBitmap)
+        } else if(requestCode == REQUEST_PICK_PHOTO && resultCode == Activity.RESULT_OK) {
+            val photoUri : Uri = data!!.data
+            val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, photoUri)
+            addFoodDataBinding.idAddFoodAvatar.setImageBitmap(bitmap)
         }
         super.onActivityResult(requestCode, resultCode, data)
     }
@@ -58,7 +66,29 @@ class AddFoodActivity : AppCompatActivity(){
     }
 
     fun uploadImage(view : View) {
-        dispatchTakePictureIntent()
+        showChooserToSetAvatar()
+    }
+
+    private fun showChooserToSetAvatar() {
+        val alertBuilder = AlertDialog.Builder(this)
+        alertBuilder.setTitle("Choose Option").setItems(R.array.avatar_chooser_array) {
+                _, which ->
+            if(which == 0) {
+                openGallery()
+            } else {
+                dispatchTakePictureIntent()
+            }
+        }
+        alertBuilder.create().show()
+    }
+
+    fun openGallery() {
+        Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI).also { openGalleryIntent ->
+            openGalleryIntent.resolveActivity(packageManager)?.also {
+                startActivityForResult(openGalleryIntent, REQUEST_PICK_PHOTO)
+            }
+        }
+
     }
 
     fun saveDish(view : View) {

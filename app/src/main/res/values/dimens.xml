@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="common_side_padding">16dp</dimen>
+    <dimen name="common_top_padding">8dp</dimen>
+
+    <dimen name="add_food_image_size">150dp</dimen>
+</resources>

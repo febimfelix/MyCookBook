@@ -13,8 +13,8 @@
 
             <ImageView
                     android:id="@+id/id_add_food_avatar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/add_food_image_size"
+                    android:layout_height="@dimen/add_food_image_size"
                     android:src="@drawable/food_avatar"
                     android:layout_marginTop="16dp"
                     android:layout_gravity="center_horizontal"

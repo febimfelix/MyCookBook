@@ -8,4 +8,9 @@
     <string name="add_food_date">Choose Date</string>
     <string name="add_food_save">Save Dish</string>
 
+    <array name="avatar_chooser_array">
+        <item name="gallery">Select From Device</item>
+        <item name="camera">Choose Camera</item>
+    </array>
+
 </resources>
