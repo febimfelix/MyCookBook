@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "913274424730",
+    "firebase_url": "https://mycookbook-25341.firebaseio.com",
+    "project_id": "mycookbook-25341",
+    "storage_bucket": "mycookbook-25341.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:913274424730:android:ede369d0be853fd2",
+        "android_client_info": {
+          "package_name": "com.febi.mycookbook"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "913274424730-kngniasuqfdi5vv94q0eggb35dd3tnrb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKWfcdK72cYHRTx8W9XCJeoGc81Nd879M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

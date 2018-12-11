@@ -4,4 +4,5 @@
     <dimen name="common_top_padding">8dp</dimen>
 
     <dimen name="add_food_image_size">150dp</dimen>
+    <dimen name="food_list_image_size">80dp</dimen>
 </resources>

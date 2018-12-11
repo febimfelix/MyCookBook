@@ -57,10 +57,25 @@ class AddFoodActivity : AppCompatActivity(){
             addFoodDataBinding.idAddFoodAvatar.setImageBitmap(imageBitmap)
         } else if(requestCode == REQUEST_PICK_PHOTO && resultCode == Activity.RESULT_OK) {
             val photoUri : Uri  = data!!.data
+            mCurrentPhotoPath   = getImagePath(photoUri)
             val bitmap: Bitmap  = MediaStore.Images.Media.getBitmap(this.contentResolver, photoUri)
             addFoodDataBinding.idAddFoodAvatar.setImageBitmap(bitmap)
         }
         super.onActivityResult(requestCode, resultCode, data)
+    }
+
+    fun getImagePath(uri : Uri) : String {
+        val projection = arrayOf(MediaStore.Images.Media.DATA)
+        val cursor = this.contentResolver.query(uri, projection, null, null, null)
+        if(cursor != null) {
+            val columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+            cursor.moveToFirst()
+            val path = cursor.getString(columnIndex)
+            cursor.close()
+            return path
+        }
+
+        return uri.path
     }
 
     private val dateClickListener : View.OnClickListener = View.OnClickListener {
@@ -102,11 +117,10 @@ class AddFoodActivity : AppCompatActivity(){
     }
 
     fun saveDish(view : View) {
-        val bitmapDrawable : BitmapDrawable = addFoodDataBinding.idAddFoodAvatar.drawable as BitmapDrawable
-        dishViewModel.insert(Dish(addFoodDataBinding.idAddFoodName.text.toString(),
-            AppUtils.getDateFromString(addFoodDataBinding.idAddFoodDate.text.toString()),
+        dishViewModel.insert(Dish(0, addFoodDataBinding.idAddFoodName.text.toString(),
+            addFoodDataBinding.idAddFoodDate.text.toString(),
             addFoodDataBinding.idAddFoodDesc.text.toString(),
-            AppUtils.getByteArrayFromDrawable(bitmapDrawable.bitmap)))
+            mCurrentPhotoPath))
 
         finish()
     }

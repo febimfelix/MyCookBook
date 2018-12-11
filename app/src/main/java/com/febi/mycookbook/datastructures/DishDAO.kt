@@ -7,11 +7,9 @@ import android.arch.persistence.room.Query
 
 @Dao
 interface DishDAO {
-    @Query("SELECT * FROM dish_table ORDER BY date")
+    @Query("SELECT * FROM dish_table")
     fun getAllDishes() : LiveData<List<Dish>>
 
     @Insert
     fun insertDish(dish: Dish)
-
-
 }

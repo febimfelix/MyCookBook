@@ -7,7 +7,7 @@ import android.content.Context
 import com.febi.mycookbook.datastructures.Dish
 import com.febi.mycookbook.datastructures.DishDAO
 
-@Database(entities = [Dish::class], version = 1)
+@Database(entities = [Dish::class], version = 1, exportSchema = false)
 public abstract class CookBookDatabase : RoomDatabase() {
     abstract fun dishDao() : DishDAO
 
