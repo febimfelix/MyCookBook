@@ -38,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
         when(requestCode) {
             101 -> {
                 if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
-                    mIsPermissionGranted = true;
+                    mIsPermissionGranted = true
                 }
             }
         }

@@ -12,10 +12,10 @@ import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
 class DishViewModel(application: Application) : AndroidViewModel(application) {
-    private val parentJob: Job = Job()
+    private val parentJob       = Job()
     private val coroutineContext : CoroutineContext
-        get()           = parentJob + Dispatchers.Main
-    private val scope   = CoroutineScope(coroutineContext)
+        get()                   = parentJob + Dispatchers.Main
+    private val scope           = CoroutineScope(coroutineContext)
 
     private var dishRepository : DishRepository
     var allDishes : LiveData<List<Dish>> ?= null

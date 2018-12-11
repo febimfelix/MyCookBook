@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.febi.mycookbook.R
-import com.febi.mycookbook.core.AppUtils
 import com.febi.mycookbook.datastructures.Dish
 import java.io.File
 import java.io.FileNotFoundException
