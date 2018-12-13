@@ -6,10 +6,13 @@ import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 import com.febi.mycookbook.datastructures.Dish
 import com.febi.mycookbook.datastructures.DishDAO
+import com.febi.mycookbook.datastructures.GroceryDAO
+import com.febi.mycookbook.datastructures.GroceryItem
 
-@Database(entities = [Dish::class], version = 1, exportSchema = false)
+@Database(entities = [Dish::class, GroceryItem::class], version = 1, exportSchema = false)
 public abstract class CookBookDatabase : RoomDatabase() {
     abstract fun dishDao() : DishDAO
+    abstract fun groceryItemDao() : GroceryDAO
 
     companion object {
         private var INSTANCE : CookBookDatabase? = null

@@ -4,7 +4,7 @@
     <string name="home_menu_settings">Settings</string>
     <string name="home_title">Home</string>
     <string name="home_dishes_list">My \nDishes</string>
-    <string name="home_plan_meals">Plan \n Meals</string>
+    <string name="home_plan_grocery_list">Grocery \n List</string>
     <string name="home_what_to_cook">What \nTo \nCook</string>
     <string name="home_my_story">My \n Story</string>
 
@@ -15,6 +15,14 @@
     <string name="add_food_desc">Description/Recipe </string>
     <string name="add_food_date">Choose Date</string>
     <string name="add_food_save">Save Dish</string>
+
+    <string name="add_grocery_title">Add Grocery</string>
+    <string name="add_grocery_title_text">Title:</string>
+    <string name="add_grocery_item">Add+</string>
+    <string name="add_grocery_save">SAVE</string>
+    <string name="add_grocery_plus">+</string>
+    <string name="add_grocery_title_missing">Please fill up the title.</string>
+    <string name="add_grocery_items_missing">Please add atleast one item in the list.</string>
 
     <array name="avatar_chooser_array">
         <item name="gallery">Select From Device</item>

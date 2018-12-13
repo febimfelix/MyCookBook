@@ -9,7 +9,7 @@ class DishRepository(private val dishDAO: DishDAO) {
     val allDishes : LiveData<List<Dish>> = dishDAO.getAllDishes()
 
     @WorkerThread
-    suspend fun insert(dish : Dish) {
+    suspend fun insert(dish : Dish){
         dishDAO.insertDish(dish)
     }
 }

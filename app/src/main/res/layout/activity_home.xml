@@ -49,7 +49,7 @@
                         android:layout_marginStart="@dimen/common_top_padding"
                         android:background="@color/transparent_white"
                         android:gravity="center"
-                        android:text="@string/home_plan_meals"
+                        android:text="@string/home_plan_grocery_list"
                         android:textColor="@color/white_color"
                         android:textSize="24sp"
                         android:textStyle="bold"

@@ -40,12 +40,16 @@
                 android:label="@string/home_my_story"
                 android:screenOrientation="portrait"/>
         <activity
-                android:name=".activities.PlanMealsActivity"
-                android:label="@string/home_plan_meals"
+                android:name=".activities.GroceryListActivity"
+                android:label="@string/home_plan_grocery_list"
                 android:screenOrientation="portrait"/>
         <activity
                 android:name=".activities.SettingsActivity"
                 android:label="@string/settings_title"
+                android:screenOrientation="portrait"/>
+        <activity
+                android:name=".activities.AddGroceryActivity"
+                android:label="@string/add_grocery_title"
                 android:screenOrientation="portrait"/>
 
         <provider

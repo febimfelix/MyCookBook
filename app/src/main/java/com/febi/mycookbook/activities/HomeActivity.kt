@@ -27,7 +27,7 @@ class HomeActivity : AppCompatActivity() {
 
         if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) ==
                 PackageManager.PERMISSION_GRANTED) {
-            mIsPermissionGranted = true;
+            mIsPermissionGranted = true
         } else {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 101)
         }
@@ -68,7 +68,7 @@ class HomeActivity : AppCompatActivity() {
 
     fun navigateToPlanMeals(view : View){
         if(!mIsPermissionGranted) return
-        val intent = Intent(this, PlanMealsActivity::class.java)
+        val intent = Intent(this, GroceryListActivity::class.java)
         startActivity(intent)
     }
 

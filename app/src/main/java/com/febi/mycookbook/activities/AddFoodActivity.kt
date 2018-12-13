@@ -8,7 +8,6 @@ import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
@@ -22,7 +21,6 @@ import android.view.View
 import android.widget.DatePicker
 import com.febi.mycookbook.R
 import com.febi.mycookbook.activities.AddFoodActivity.DatePickerFragment.OnDateSelectionListener
-import com.febi.mycookbook.core.AppUtils
 import com.febi.mycookbook.databinding.ActivityAddFoodBinding
 import com.febi.mycookbook.datastructures.Dish
 import com.febi.mycookbook.datastructures.DishViewModel
